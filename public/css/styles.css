@@ -1,0 +1,81 @@
+/* ** ** ** ** **
+**
+** GLOBAL STYLES
+**
+** ** ** ** ** */
+
+/* Import Open Sans and Roboto */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
+
+body {
+    background-color: #2B2F3E;
+    color: #8B8BBC;
+    font-family: 'Monaco', monospace;
+}
+
+a {
+    color: #8B8BBC;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+/* ** ** ** ** **
+**
+** CONTENT STYLES
+**
+** ** ** ** ** */
+
+.content-wrapper {
+    margin: 10% auto;
+    width: 70%;
+    max-width: 600px;
+}
+
+.filename {
+    font-family: 'Open Sans', san-serif;
+    margin: 0 auto 6%;
+}
+
+.filename a {
+    color: #B3B5C7;
+    transition: color 0.5s ease;
+}
+
+.filename a:hover {
+    color: #fff;
+}
+
+.code-wrapper {
+    line-height: 2em;
+    counter-reset: line;
+}
+
+.line {
+    letter-spacing: 1px;
+    /*margin: 18px auto;*/
+}
+
+.line:before {
+    counter-increment: line;
+    content: counter(line, decimal-leading-zero);
+    display: inline-block;
+    margin-right: 20px;
+    color: #505668;
+}
+
+.varname {
+    color: #B3B5C7;
+}
+
+.string {
+    color: #E5B88B;
+}
+
+.quote {
+    /*margin-left: 42px;*/
+}
