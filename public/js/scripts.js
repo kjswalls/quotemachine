@@ -12,10 +12,13 @@ $(function() {
 
     // Tweet the quote when the link is clicked
     $('#tweet').on('click', function(e) {
-        var urlQuote = quote.replace(/ /g, '%20').replace(/'/g, "\\'").replace(/"/g, '\\"');
-        // var urlQuote = encodeURIComponent(quote);
-        console.log(urlQuote);
-        var url = 'https://twitter.com/intent/tweet?text=' + '"' + urlQuote + '"' + '%20-%20' + author;
+        var urlQuote = quote.replace(/'/g, '&#39;').replace(/"/g, '&#34;');
+
+        var urlQuote = encodeURIComponent(quote);
+
+        var urlAuthor = encodeURIComponent(author);
+
+        var url = 'https://twitter.com/intent/tweet?text=' + '"' + urlQuote + '"' + '%20-%20' + urlAuthor;
         $('#tweet').attr('href', url);
     });
 });
@@ -39,8 +42,13 @@ function getQuote() {
             var post = data.shift();
             author = post.title.toLowerCase();
 
+            // author = encodeURIComponent(author);
+            // quote = encodeURIComponent(quote);
+
             // Strip <p> tags from the string, per: http://stackoverflow.com/questions/5002111/javascript-how-to-strip-html-tags-from-string
             quote = post.content.toLowerCase().replace(/<\/?[^>]+(>|$)/g, '');
+
+            quote = quote.replace(/&#8216;|&#8217;|&#8218;|&#8219;/g, "\'").replace(/&#8220;|&#8221;|&#8222;/g, '\"');
             quote = quote.trim();
 
             $author.html("'" + author + "'");
