@@ -37,7 +37,7 @@ function getQuote() {
 
     // Call to Quotes on Design API, per: https://quotesondesign.com/api-v4-0/
     $.ajax({
-        url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
+        url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
         success: function(data) {
             var post = data.shift();
             author = post.title.toLowerCase();
